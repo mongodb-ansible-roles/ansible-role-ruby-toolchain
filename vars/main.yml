@@ -1,1 +1,11 @@
 ---
+distro_name: "{{ ansible_distribution }}{{ ansible_distribution_major_version }}"
+distro_dict:
+  Debian10: debian10
+  Debian9: debian92
+  MacOSX10: osx
+  RedHat8: rhel80
+  RedHat7: rhel70
+  RedHat6: rhel62
+  Ubuntu16: ubuntu1604
+distro: "{{ distro_dict[distro_name] }}"

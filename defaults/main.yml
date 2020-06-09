@@ -1,1 +1,7 @@
 ---
+ruby_toolchain_final_dest: /opt/ruby
+ruby_toolchain_sha: ""
+ruby_toolchain_url: https://s3.amazonaws.com/boxes.10gen.com/build/toolchain-drivers/mongo-ruby-driver/ruby-toolchain-{{ distro }}-{{ ruby_toolchain_sha }}.tar.gz
+ruby_toolchain_revisions_directory: /opt/ruby/revisions
+ruby_toolchain_delete_old_final_dest: false
+ruby_toolchain_evergreen_user: root

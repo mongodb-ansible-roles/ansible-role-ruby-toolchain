@@ -1,1 +1,28 @@
 ---
+- name: Remove old toolchain
+  become: true
+  file:
+    path: "{{ ruby_toolchain_final_dest }}"
+    state: absent
+  when:
+    - toolchain_archive_contents.changed
+
+- name: Move ruby directory from tmp to {{ ruby_toolchain_final_dest }}
+  become: true
+  command: mv /tmp/{{ toolchain_top_level_directory }} {{ ruby_toolchain_final_dest }}
+  args:
+    creates: "{{ ruby_toolchain_revisions_directory }}/{{ toolchain_top_level_directory }}"
+  when:
+    - toolchain_archive_contents.changed
+
+- name: Create version file [{{ ruby_toolchain_sha }}]
+  become: true
+  copy:
+    content: "{{ ruby_toolchain_sha }}"
+    dest: "{{ ruby_toolchain_final_dest }}/toolchain_version"
+
+- name: Link rubies to homedir
+  file:
+    src: "{{ ruby_toolchain_final_dest }}"
+    dest: "{{ ansible_env.HOME }}/.rubies"
+    state: link
