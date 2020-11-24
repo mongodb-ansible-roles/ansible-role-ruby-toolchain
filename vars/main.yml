@@ -8,4 +8,5 @@ distro_dict:
   RedHat7: rhel70
   RedHat6: rhel62
   Ubuntu16: ubuntu1604
+  Ubuntu18: ubuntu1804
 distro: "{{ distro_dict[distro_name] }}"

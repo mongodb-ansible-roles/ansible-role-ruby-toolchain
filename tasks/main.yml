@@ -20,6 +20,7 @@
   copy:
     content: "{{ ruby_toolchain_sha }}"
     dest: "{{ ruby_toolchain_final_dest }}/toolchain_version"
+    mode: "0600"
 
 - name: Link rubies to homedir
   file:
